@@ -60,7 +60,7 @@ def clean_text(text: str) -> str:
     return cleaned_text
 
 
-# ---------------------------------------------------
+# ---------------------------------------------ssss------
 
 def analyze_resume(file):
     resume_text = extract_text_from_file(file)
