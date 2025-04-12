@@ -32,12 +32,13 @@ jobs:
           # app-dir: ~/project/package-directory/  # If your requirements.txt isn't in the root directory.
           # pip-dependency-file: test-requirements.txt  # if you have a different name for your requirements file, maybe one that combines your runtime and test requirements.
       - run:
+          name: Set PYTHONPATH
+          command: echo 'export PYTHONPATH=.' >> $BASH_ENV
+      - run:
           name: Run tests
           # This assumes pytest is installed via the install-package step above
           command: pytest
-      - run:
-          name: Set PYTHONPATH
-          command: echo 'export PYTHONPATH=.' >> $BASH_ENV
+
 
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/workflows/ & https://circleci.com/docs/configuration-reference/#workflows
