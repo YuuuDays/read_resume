@@ -6,7 +6,7 @@ import io, os, re
 from dotenv import load_dotenv
 import numpy as np
 from itertools import groupby
-from read_resume.myproject.lib.StringShaping import clean_text
+from utils.string_shaping import clean_text
 
 
 load_dotenv()
