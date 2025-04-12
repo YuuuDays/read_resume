@@ -44,8 +44,8 @@ def remove_duplicate_lines(text: str) -> str:
         else:
             count = 1
 
-        # 同じ行が3回続いた場合、それ以降は無視
-        if count <= 3:
+        # 同じ行が2回続いた場合、それ以降は無視
+        if count <= 2:
             result.append(line)
 
         last_line = line
