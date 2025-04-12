@@ -17,6 +17,12 @@ client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 def analyze_resume(file):
     resume_text = extract_text_from_file(file)
+
+    # excel or PDF 以外
+    if resume_text == "対応しているのはPDFと.xlsxのみです":
+        print("[DBG]excel or PDF 以外がアップロードされました")
+        return resume_text
+
     # クリーン処理を追加
     cleaned_text = clean_text(resume_text)
     print("========== 抽出されたテキスト ==========")
@@ -52,7 +58,7 @@ def analyze_resume(file):
 
 
 # 概要:対象ファイルの拡張子判断
-def extract_text_from_file(file):
+def extract_text_from_file(file) -> str:
     file_name = file.name
 
     # PDF
