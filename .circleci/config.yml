@@ -35,6 +35,9 @@ jobs:
           name: Run tests
           # This assumes pytest is installed via the install-package step above
           command: pytest
+      - run:
+          name: Set PYTHONPATH
+          command: echo 'export PYTHONPATH=.' >> $BASH_ENV
 
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/workflows/ & https://circleci.com/docs/configuration-reference/#workflows
