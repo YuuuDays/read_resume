@@ -15,7 +15,8 @@ client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 # ---------------------------------------------------
 
-def analyze_resume(file):
+def analyze_resume(file) -> str:
+    print(f"[analyze_resume] type is {type(file)}")
     resume_text = extract_text_from_file(file)
 
     # excel or PDF 以外
@@ -54,11 +55,19 @@ def analyze_resume(file):
     10,000回	約 4,500円
     """
 
+    # 結果用
+    print("============================")
+    print("文字数")
+    print(f"成形前:{len(resume_text)}行")
+    print(f"成形後:{len(cleaned_text)}行")
+    print("============================")
+
     return response.choices[0].message.content.strip()
 
 
 # 概要:対象ファイルの拡張子判断
 def extract_text_from_file(file) -> str:
+    print(f"★type is {type(file)}")
     file_name = file.name
 
     # PDF
@@ -88,4 +97,4 @@ iface = gr.Interface(
     description="PDFまたはExcel 形式の履歴書をアップロードすると内容をAIが自動で要約する"
 )
 
-iface.launch()
+iface.launch(share=True)
