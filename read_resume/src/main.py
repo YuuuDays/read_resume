@@ -37,7 +37,7 @@ def create_prompt(cleaned_text: str) -> str:
 # --- ChatGPTへ問い合わせ ---
 def get_analysis_from_openai(prompt: str) -> str:
     response = client.chat.completions.create(
-        model="gpt-3.5-turbo",
+        model="gpt4.0",
         messages=[
             {"role": "system", "content": "貴方は履歴書を見て欲しい人材を判断する人事担当者です"},
             {"role": "user", "content": prompt}
