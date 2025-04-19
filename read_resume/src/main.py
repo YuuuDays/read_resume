@@ -22,6 +22,7 @@ def extract_text_from_file(file) -> str:
     else:
         return "対応しているのはPDFと.xlsxのみです"
 
+# PDF 読み込み
 def extract_text_from_pdf(file) -> str:
     reader = PyPDF2.PdfReader(file)
     return "".join(page.extract_text() for page in reader.pages)
